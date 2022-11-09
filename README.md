@@ -1,5 +1,4 @@
-# Logging in and running a simple Python script on the BYU Fulton Supercomputer
-
+# Supercomputer-Instructions
 Technical Instructions for loading and running a simple job script on the BYU Fulton Supercomputer for DRAGN-Lab members. 
 
 
@@ -62,7 +61,7 @@ __Note: After enabling two-factor authentication, the Office of Research Compute
   
 <br>
 
-2. Log in to the supercomputer via SSH protocol using the command:
+2. Log in to the supercomputer via SSH protocol. The following command can be used to log in once two-factor authentication is enabled.
 
 ```
 ssh <username>@ssh.rc.byu.edu
@@ -102,7 +101,7 @@ If successful, you should now see a terminal prompt for a login node of the supe
 
 <br>
 
-Before scheduling your job script, you need to make sure the correct software modules needed to execute your job are enabled in the shell. In order to run our hello.py file, we need to make sure Python is enabled in the shell before scheduling our job. We can use the supercomputer's module system to load and unload software needed for each job we run.
+Before scheduling your job script, you need to make sure the correct software modules needed to execute your job are enabled in the shell. In order to run the hello.py file, you need to make sure Python is enabled in the shell before scheduling our job. The supercomputer's module system can be used to load and unload software needed for each job that will be run.
 
 <br>
 
@@ -176,7 +175,7 @@ If you see just the Python 3.8 module loaded, you are now ready to upload our he
 
 <br>
 
-Once the environment is set up, all that is left to do is submit our job to the supercomputer's scheduler and wait for the results. 
+Once the environment is set up, all that is left to do is submit our job to the supercomputer's scheduler and wait for the results. In this section, we will copy the files from our local computer to the supercomputer and send them to the scheduler to be run.
 
 <br>
 
@@ -188,7 +187,7 @@ cd compute
 
 <br>
 
-2. Open a new terminal or command line window and navigate to the cloned github repository that contains the myscript.sh file.
+2. Switch back to the local terminal window and navigate to the cloned github repository that contains the myscript.sh file.
 
 <br>
 
@@ -222,7 +221,11 @@ You should now see myscript.sh in your compute directory as seen in the screensh
 
 <br>
 
-7. From the compute node directory, use the sbatch command to schedule the myscript.sh file. 
+7. Switch back to the supercomputer terminal window. 
+
+<br>
+
+8. From the compute node directory, use the sbatch command to schedule the myscript.sh file. 
 
 ```
 sbatch –time 00:10:00 –mem 1G <script name>.sh
@@ -243,9 +246,11 @@ __Additional flags and sbatch properties can be viewed at https://slurm.schedmd.
 <br>
 
 
-8. Record the assigned job id that is displayed after scheduling the job. This id can be used to both check job status and confirm the output file belongs to the job. 
+9. Record the assigned job id that is displayed after scheduling the job. This id can be used to both check job status and confirm the output file belongs to the job. 
 
 <br>
+
+The screenshot below shows the output seen after scheduling a job. The assigned job id is clearly stated after the text "Submitted batch job". 
 
 ![Job Scheduled](images/Submitted.png)
 
@@ -255,7 +260,7 @@ __Additional flags and sbatch properties can be viewed at https://slurm.schedmd.
 
 <br>
 
-Now that your job is scheduled, you can check the status of current jobs and view output from the same compute node.
+Now that your job is scheduled, we can use check the job status and view the output from the supercomputer terminal window.
 
 <br>
 
@@ -283,7 +288,23 @@ slurm-<job id number>.out
 
 <br>
 
-Either the cat command or a preferred Linux text editor program can be used to view the .out file. If the previous steps were followed, the output file should contain the line "Hello, World!" as shown in the screenshot below.
+If our job was assigned the job id 1234 after scheduling it, the output file would appear in the compute directory as seen below.
 
+```
+slurm-1234.out
+```
+
+<br>
+
+If the previous steps were followed, the output file should contain the line "Hello, World!" as shown in the screenshot below.**
 
 ![Hello World Output](images/Hello_Out.png)
+
+<br>
+
+**Tip: Either the cat command or a preferred Linux text editor program can be used to view the .out file.**
+
+<br>
+<br>
+
+Now you are ready to run your research jobs on the supercomputer. Although the files will be more complicated and require more modules to run, the process is the same as outlined in these instructions. 
