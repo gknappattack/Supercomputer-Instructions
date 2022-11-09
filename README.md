@@ -1,5 +1,6 @@
-# Supercomputer-Instructions
-Technical Instructions for loading and running a simple job script on the BYU Fulton Supercomputer for DRAGN-Lab members. 
+# Logging in and running a simple Python script on the BYU Fulton Supercomputer
+
+These instructions are designed for members of Dr. Fulda's DRAGN Lab to learn how to log in, load modules, and schedule a job script on the BYU Fulton Supercomputer. Through these instructions, you will run a simple Python "Hello, World!" script to understand the basic steps that will apply when running more complex scripts and routines.
 
 
 ## Setup
